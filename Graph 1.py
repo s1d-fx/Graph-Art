@@ -8,15 +8,17 @@ def plot_function(f, xlim=(-10, 10), ylim=(-10, 10), num_points=1000, save_as=No
     x = np.linspace(xlim[0], xlim[1], num_points)
     y = f(x)
     
-    plt.figure(figsize=(8, 8))
+    plt.figure(figsize=(7, 7))
     
     # Draw axes
     plt.axhline(0, color='black', linewidth=1)
     plt.axvline(0, color='black', linewidth=1)
     
     # Set grid and limits
-    plt.grid(True, linestyle='--', linewidth=0.5, which='both')
-    plt.minorticks_on()
+    plt.xticks(np.arange(xlim[0], xlim[1]))
+    plt.yticks(np.arange(ylim[0], ylim[1]))
+    plt.grid(True, linestyle='-', linewidth=0.5, which='both')
+    # plt.minorticks_on()
     plt.xlim(xlim)
     plt.ylim(ylim)
     
@@ -36,10 +38,9 @@ def plot_function(f, xlim=(-10, 10), ylim=(-10, 10), num_points=1000, save_as=No
     else:
         plt.show()
 
-# Example usage:
-plot_function(lambda x: x**2, save_as="function_plot.png")  # Save as PNG with a transparent background
-
-
+# The funtion
+plot_function(lambda x: x**3)  # Save as PNG with a transparent background
+# save_as="function_plot.png"
 
 
 
