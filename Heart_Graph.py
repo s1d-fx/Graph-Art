@@ -16,7 +16,7 @@ def plot_implicit_function(xlim=(-scale, scale), ylim=(-scale, scale), resolutio
     plt.figure(figsize=(8, 8))
     
     # Define color in RGB format
-    col = 200
+    col = 50
     light_gray = (col/255, col/255, col/255)
     grid_linewidth = 0.3
     
