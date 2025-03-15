@@ -1,16 +1,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-scale = 5
+scale = 3
 
 def plot_function(f, xlim=(-scale, scale), ylim=(-scale, scale), num_points=1000, save_as=None):
     x = np.linspace(xlim[0], xlim[1], num_points)
     y = f(x)
     
-    plt.figure(figsize=(8, 8))
+    plt.figure(figsize=(7, 7))
     
     # Define color in RGB format
-    graph_colour = (225/255, 225/255, 225/255)
+    col = 100
+    graph_colour = (col/255, col/255, col/255)
     grid_linewidth = 0.5
     
     # Draw axes 
@@ -41,7 +42,11 @@ def plot_function(f, xlim=(-scale, scale), ylim=(-scale, scale), num_points=1000
     else:
         plt.show()
 
+k = 2
 
 # The Function:
-# plot_function(np.cos) # Plot
-plot_function(np.cos, save_as="function_plot.png") # Save as png
+plot_function(lambda x: np.where((-2 < x) & (x < 1), 
+                                 k * (2 * (np.log(2 * (x + 4)) / 2)**np.sin(2 * (x + 4)) - 2), 
+                                 np.nan), save_as="function_plot.png")
+ # Plot
+# save_as="function_plot.png" 
