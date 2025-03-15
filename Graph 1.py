@@ -1,7 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def plot_function(f, xlim=(-8, 8), ylim=(-8, 8), num_points=1000, save_as=None):
+scale = 5
+
+def plot_function(f, xlim=(-scale, scale), ylim=(-scale, scale), num_points=1000, save_as=None):
     x = np.linspace(xlim[0], xlim[1], num_points)
     y = f(x)
     
@@ -16,8 +18,8 @@ def plot_function(f, xlim=(-8, 8), ylim=(-8, 8), num_points=1000, save_as=None):
     plt.axvline(0, color=graph_colour, linewidth=grid_linewidth)
     
     # Set grid and limits, ensuring final right and bottom grid lines appear
-    plt.xticks(np.arange(xlim[0], xlim[1] + 1, 1), [])  # Keep grid but hide numbers
-    plt.yticks(np.arange(ylim[0], ylim[1] + 1, 1), [])  # Keep grid but hide numbers
+    plt.xticks(np.arange(xlim[0], xlim[1] + 1, 1), [])  # Keep grid, hide numbers
+    plt.yticks(np.arange(ylim[0], ylim[1] + 1, 1), [])  # Keep grid, hide numbers
     plt.grid(True, linestyle='-', linewidth=grid_linewidth, which='both', color=graph_colour)
     plt.xlim(xlim[0] - 0.5, xlim[1] + 0.5)
     plt.ylim(ylim[0] - 0.5, ylim[1] + 0.5)
@@ -32,10 +34,6 @@ def plot_function(f, xlim=(-8, 8), ylim=(-8, 8), num_points=1000, save_as=None):
     # Plot the function with the specified light gray color
     plt.plot(x, y, color=graph_colour, linewidth=0.8)
     
-    # Add function label
-    function_label = f"y = {f.__name__}(x)" if hasattr(f, '__name__') else "y = f(x)"
-    plt.text(0.5 * (xlim[0] + xlim[1]), 0.8 * ylim[1], function_label, color=graph_colour, fontsize=12, ha='center')
-    
     # Save or show the plot
     if save_as:
         plt.savefig(save_as, transparent=True, dpi=300)
@@ -45,5 +43,5 @@ def plot_function(f, xlim=(-8, 8), ylim=(-8, 8), num_points=1000, save_as=None):
 
 
 # The Function:
-plot_function(np.cos)  # Save as PNG with a transparent background
-# save_as="function_plot.png"
+# plot_function(np.cos) # Plot
+plot_function(np.cos, save_as="function_plot.png") # Save as png
