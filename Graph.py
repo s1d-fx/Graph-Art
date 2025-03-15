@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-scale = 10
+scale = 2.4
 
 def plot_function(f, xlim=(-scale, scale), ylim=(-scale, scale), num_points=1000, save_as=None):
     x = np.linspace(xlim[0], xlim[1], num_points)
@@ -19,14 +19,15 @@ def plot_function(f, xlim=(-scale, scale), ylim=(-scale, scale), num_points=1000
     plt.axvline(0, color=graph_colour, linewidth=grid_linewidth)
     
     # Set grid and limits, ensuring final right and bottom grid lines appear
-    plt.xticks(np.arange(xlim[0], xlim[1] + 1, 1), [])  # Keep grid, hide numbers
-    plt.yticks(np.arange(ylim[0], ylim[1] + 1, 1), [])  # Keep grid, hide numbers
+    plt.xticks(np.arange(xlim[0], xlim[1] + 1, 1), color=graph_colour)  # Keep grid, hide numbers
+    plt.yticks(np.arange(ylim[0], ylim[1] + 1, 1), color=graph_colour)  # Keep grid, hide numbers
     plt.grid(True, linestyle='-', linewidth=grid_linewidth, which='both', color=graph_colour)
+    plt.minorticks_on()
     plt.xlim(xlim[0], xlim[1])
     plt.ylim(ylim[0], ylim[1])
     
-    # Remove minor ticks and plot borders
-    plt.gca().tick_params(which='both', size=0)  # Remove tick marks
+    # Remove tick marks and plot borders
+    plt.gca().tick_params(which='both', size=0, colors=graph_colour)  # Set tick color  # Remove tick marks
     plt.gca().spines['top'].set_color(graph_colour)
     plt.gca().spines['right'].set_color(graph_colour)
     plt.gca().spines['bottom'].set_color(graph_colour)
@@ -45,5 +46,5 @@ def plot_function(f, xlim=(-scale, scale), ylim=(-scale, scale), num_points=1000
 k = 2
 
 # The Function:
-plot_function(lambda x: 2 * np.e**(-1/2*x**2), save_as="function_plot.png")
+plot_function(lambda x: np.e**(-x**2), save_as="function_plot.png")
 # save_as="function_plot.png"
