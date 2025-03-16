@@ -1,9 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-scale = 1.4
+len_x = 1.4
+len_y = 1.4
 
-def plot_implicit_function(xlim=(-scale, scale), ylim=(-scale, scale), resolution=500, rotation_deg=355, save_as=None):
+def plot_implicit_function(xlim=(-len_x, len_x), ylim=(-len_y, len_y), resolution=500, rotation_deg=355, save_as=None):
     # Create a grid of (x, y) values.
     x = np.linspace(xlim[0], xlim[1], resolution)
     y = np.linspace(ylim[0], ylim[1], resolution)
@@ -22,31 +23,33 @@ def plot_implicit_function(xlim=(-scale, scale), ylim=(-scale, scale), resolutio
     plt.figure(figsize=(8, 8))
     
     # Define color in RGB format
-    col = 50
-    light_gray = (col/255, col/255, col/255)
+    grid = 130
+    line = 50
+    grid_col = (grid/255, grid/255, grid/255)
+    line_col = (line/255, line/255, line/255)
     grid_linewidth = 0.3
     
     # Draw the axes
-    plt.axhline(0, color=light_gray, linewidth=grid_linewidth)
-    plt.axvline(0, color=light_gray, linewidth=grid_linewidth)
+    plt.axhline(0, color=grid_col, linewidth=grid_linewidth)
+    plt.axvline(0, color=grid_col, linewidth=grid_linewidth)
     
     # Set grid and limits
-    plt.xticks(np.arange(xlim[0], xlim[1] + 1, 1))  # Keep grid, hide numbers
-    plt.yticks(np.arange(ylim[0], ylim[1] + 1, 1))  # Keep grid, hide numbers
-    plt.grid(True, linestyle='-', linewidth=grid_linewidth, which='both', color=light_gray)
+    plt.xticks(np.arange(xlim[0], xlim[1] + 1, 1), color=grid_col)  # Keep grid, hide numbers
+    plt.yticks(np.arange(ylim[0], ylim[1] + 1, 1), color=grid_col)  # Keep grid, hide numbers
+    plt.grid(True, linestyle='-', linewidth=grid_linewidth, which='both', color=grid_col)
     plt.minorticks_on()
     plt.xlim(xlim[0], xlim[1])
     plt.ylim(ylim[0], ylim[1])
     
     # Remove minor ticks and plot borders
-    plt.gca().tick_params(which='both', size=1)  # Remove tick marks
-    plt.gca().spines['top'].set_color(light_gray)
-    plt.gca().spines['right'].set_color(light_gray)
-    plt.gca().spines['bottom'].set_color(light_gray)
-    plt.gca().spines['left'].set_color(light_gray)
+    plt.gca().tick_params(which='both', size=5, color=grid_col)  # Remove tick marks
+    plt.gca().spines['top'].set_color(grid_col)
+    plt.gca().spines['right'].set_color(grid_col)
+    plt.gca().spines['bottom'].set_color(grid_col)
+    plt.gca().spines['left'].set_color(grid_col)
     
     # Plot the implicit function by drawing the contour where Z == 0.
-    plt.contour(X, Y, Z, levels=[0], colors=[light_gray], linewidths=0.8)
+    plt.contour(X, Y, Z, levels=[0], colors=[line_col], linewidths=0.8)
     
     # Save or display the plot.
     if save_as:
