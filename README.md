@@ -16,7 +16,7 @@ Creates artistic plots of implicit functions. Features a heart shape generator u
 
 **Example:** Heart-shaped implicit function plot
 
-![Heart Function](output/heart_function_plot.png)
+![Heart Function](output/heart_graph_tree_overlap.png)
 
 ### scripts/equation_finder.py
 An interactive tool that lets you draw freely on a canvas with your mouse, then automatically fits a cubic polynomial equation to your drawing. After releasing the mouse button, it displays both the drawn curve and the fitted equation.
